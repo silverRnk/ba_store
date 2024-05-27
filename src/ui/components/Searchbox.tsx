@@ -13,6 +13,11 @@ const Container = styled.div<{isVisible:boolean}>`
     @media only screen and (max-width:720px){
         display:${props => props.isVisible? "flex": "none"};
     }
+
+    @media only screen and (max-width:480px){
+        display:${props => props.isVisible? "flex": "none"};
+        width:80%;
+    }
     `
 const Input = styled.input`
     all:unset;

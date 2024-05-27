@@ -87,8 +87,6 @@ const CircleButton = styled.button`
   background-color: #ffffff;
   cursor: pointer;
   opacity:100%
-  z-index: 4;
-
 `
 
 const OptionButton = () => {
