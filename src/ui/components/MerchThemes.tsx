@@ -18,7 +18,21 @@ const Container = styled.div`
     }
 `
 
-const LeftButton = styled.button``
+const Button = styled.button`
+    all:unset;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 50px;
+    width: 50px;
+    border-radius:50%;
+    cursor:pointer;
+
+    &:hover {
+        background-color: #fefefe;
+        filter: brightness(0.5);
+    }
+`
 
 const CenterWrapper = styled.div`
     flex: 1;
@@ -28,17 +42,16 @@ const CenterWrapper = styled.div`
     align-items:center;
     overflow:hidden;`
 
-const RightButton = styled.div``
 
 const MerchThemes = () => {
     return (
         <Container>
-            <LeftButton> <ChevronLeftIcon/></LeftButton>
+            <Button> <ChevronLeftIcon/></Button>
             <CenterWrapper>
                 <MerchThemeChip title='2nd Year Anniversary' link='' />
                 <MerchThemeChip title='Mika Release' link='' />
             </CenterWrapper>
-            <RightButton><ChevronRightIcon/></RightButton>
+            <Button><ChevronRightIcon/></Button>
         </Container>
     )
 }

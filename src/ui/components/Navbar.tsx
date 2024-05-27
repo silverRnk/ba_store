@@ -12,6 +12,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LanguageOptions from "./LanguageOptions";
 import AccountMenu from "./ProfileMenu";
 
+const Nav = styled.div`
+  display:flex;
+  height: 75px;
+  background-color: #fefefe;
+`
+
 const Left = styled("div").withConfig({
   shouldForwardProp: (props) => {
     return props !== "isVisible";
@@ -94,7 +100,7 @@ const Right = styled("div").withConfig({
   display: flex;
   width: auto;
   align-items: center;
-
+  gap: 5pxs
   @media only screen and (max-width: 720px) {
     display: ${(props) => (props.isVisible ? "flex" : "none")};
   }
@@ -125,7 +131,7 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <nav className="h-[75px] flex flex-row p-2 bg-[#fefefe] container-shadow">
+    <Nav>
       <Left isVisible={isVisible}>
         <LogoWrapper id="logo-wrapper" isVisible={!isVisible}>
           S.C.H.A.L.E
@@ -163,7 +169,7 @@ const Navbar = () => {
       </Right>
 
 
-    </nav>
+    </Nav>
   );
 };
 
