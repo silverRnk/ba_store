@@ -23,9 +23,11 @@ const Nav = styled.div`
 
 `
 const Default = styled.div`
+  margin: 0 auto;
   display:flex;
   height: 75px;
-  width:100vw;
+  width:95vw;
+
 
   @media only screen and (max-width: 480px) {
     display:none;
@@ -47,12 +49,10 @@ const Left = styled("div").withConfig({
 
   @media only screen and (max-width: 720px) {
     width:${(props) => (props.isVisible ? "300px" : "inherit")};
+    flex: 1;
   }
 
-  @media only screen and (max-width: 480px) {
-    grid-column: span 4;
-    grid-row: 1/4;
-  }
+
 `;
 const LogoWrapper = styled("div").withConfig({
   shouldForwardProp: (props) => {
@@ -152,7 +152,8 @@ const Center = styled("div").withConfig({
     margin: 0 auto;
 
   @media only screen and (max-width:720px){
-    display: ${(props) => props.isVisible ? "flex": "none"}
+    display: ${(props) => props.isVisible ? "flex": "none"};
+    flex:3;
     width:inherit;
     margin: 0 0 0 auto;
   }
