@@ -3,22 +3,29 @@ import styled from 'styled-components'
 import ProductImg from "../../assets/Product_Img.png"
 
 const Card = styled.div`
-    height: 350px;
+    height: auto;
     width: 275px;
     position: relative;
     background-color: white;
+    display:flex;
+    flex-direction:column;
 `
 
 const ImageArea = styled.div`
+  flex:auto;
+
 `
 
 const Image = styled.img`
+  width:275px;
+  height:auto;
   background-color: red;
+  object-fit:cover;
 `
 const Details = styled.div`
   display: flex;
   flex-direction:column;
-  margin: 10px 5px 10px 10px;
+  margin: 0 10px 10px 10px;
   
   `
 const Title = styled.p``
@@ -29,6 +36,27 @@ const Bottom = styled.div`
 const Price = styled.div``
 const Rating = styled.div``
 
+const OptionsBackground = styled("div").withConfig({
+  shouldForwardProp: (props) => {
+    return props !== "isVisible";
+  },
+}) <{ isVisible: boolean }>`
+  display: ${(props) => props.isVisible? "block": "none"};
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: gray;
+  height: 100%;
+  width: 275px;
+  z-index: 2;
+  opacity: 20%;
+
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+`
+
 const Options = styled("div").withConfig({
   shouldForwardProp: (props) => {
     return props !== "isVisible";
@@ -38,11 +66,9 @@ const Options = styled("div").withConfig({
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: gray;
-  height: 350px;
+  height: 100%;
   width: 275px;
-  z-index: 2;
-  opacity: 20%;
+  z-index: 3;
 
   align-items: center;
   justify-content: center;
@@ -54,10 +80,14 @@ const CircleButton = styled.button`
   all:unset;
   height: 50px;
   width: 50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   border-radius: 50%;
-  background-color: white;
+  background-color: #ffffff;
   cursor: pointer;
-  z-index: 3;
+  opacity:100%
+  z-index: 4;
 
 `
 
@@ -82,7 +112,7 @@ const ItemCard = () => {
   return (
     <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <ImageArea>
-          <Image width={"inherit"} height={"auto"} src={ProductImg} alt='product'/>
+          <Image  src={ProductImg} alt='product'/>
         </ImageArea>
         <Details>
           <Title>Mika Keychain</Title>
@@ -91,8 +121,11 @@ const ItemCard = () => {
             <Rating>*****</Rating>
           </Bottom>
         </Details>
+        <OptionsBackground isVisible={mouseEnter}>
+          
+        </OptionsBackground>
         <Options isVisible={mouseEnter}>
-          <OptionButton/>
+            <OptionButton/>
           <OptionButton/>
           <OptionButton/>
         </Options>
