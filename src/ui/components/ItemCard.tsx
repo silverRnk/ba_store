@@ -5,6 +5,7 @@ import ProductImg from "../../assets/Product_Img.png"
 import ShoppingCartBorderIcon from '@mui/icons-material/ShoppingCartBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { NewDeals } from '../../interface';
 
 const Card = styled.div`
     height: auto;
@@ -135,7 +136,8 @@ const OptionButton = (props:{
   )
 }
 
-const ItemCard = () => {
+const ItemCard = (prop: NewDeals) => {
+  const {title, price, rating, reviews, url, imageURL} = prop
   const [mouseEnter, useMouseEnter] = useState(false);
   const [isFavorite, useIsFavorite] = useState(false);
 
@@ -154,13 +156,13 @@ const ItemCard = () => {
   return (
     <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <ImageArea>
-          <Image  src={ProductImg} alt='product'/>
+          <Image  src={imageURL} alt='product'/>
         </ImageArea>
         <Details>
-          <Title>Mika Keychain</Title>
+          <Title>{title}</Title>
           <Bottom>
-            <Price>$ 100.00</Price>
-            <Rating>*****</Rating>
+            <Price>$ {price}</Price>
+            <Rating>{"*".repeat(rating)}</Rating>
           </Bottom>
         </Details>
         <OptionsBackground isVisible={mouseEnter}>
@@ -177,7 +179,7 @@ const ItemCard = () => {
             <FavoriteIcon style={{color: "pink"}}/>:
             <FavoriteBorderIcon/>}
             </OptionButton>
-          <LinkOptionButton href=''>
+          <LinkOptionButton href={url}>
             <span className="material-icons-outlined">
               search
             </span>

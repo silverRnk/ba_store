@@ -1,17 +1,12 @@
+import MikaKeyChain from '../src/assets/Product_Img.png'
+
+//Types
+import { NewDeals } from './interface'
+
 interface INavigationCard {
     title: string,
     backgroundImg?: string,
     link?:string
-}
-
-interface NewDeals {
-    title: string,
-    price: number,
-    rating: number,
-    reviews: number,
-    isFavorite: boolean,
-    url: string,
-    imageURL: string,
 }
 
 const cardNavigation: INavigationCard[] = [
@@ -21,6 +16,13 @@ const cardNavigation: INavigationCard[] = [
     {title: 'Categories'},
 ]
 
-const newDeals: NewDeals[] = [];
+const newDeals: NewDeals[] = [
+    {title: "Mika Key Chain", price: 10.00, rating: 3.5, reviews: 3215, isFavorite: false, url: "", imageURL:MikaKeyChain},
+    {title: "Seia Key Chain", price: 10.00, rating: 3.5, reviews: 3215, isFavorite: false, url: "", imageURL:MikaKeyChain},
+    {title: "Nagisa Key Chain", price: 10.00, rating: 3.5, reviews: 3215, isFavorite: false, url: "", imageURL:MikaKeyChain},
+    {title: "Mika Key Chain", price: 10.00, rating: 3.5, reviews: 3215, isFavorite: false, url: "", imageURL:MikaKeyChain},
+    {title: "Seia Key Chain", price: 10.00, rating: 3.5, reviews: 3215, isFavorite: false, url: "", imageURL:MikaKeyChain},
+    {title: "Nagisa Key Chain", price: 10.00, rating: 3.5, reviews: 3215, isFavorite: false, url: "", imageURL:MikaKeyChain},
+];
 
-export {cardNavigation}
+export {cardNavigation, newDeals}
