@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import ProductImg from "../../assets/Product_Img.png"
+
+import ShoppingCartBorderIcon from '@mui/icons-material/ShoppingCartBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { NewDeals } from '../../interface';
 
 const Card = styled.div`
     height: auto;
@@ -86,18 +91,55 @@ const CircleButton = styled.button`
   border-radius: 50%;
   background-color: #ffffff;
   cursor: pointer;
-  opacity:100%
+  opacity:100%;
+  transition : all 0.25 ease-in-out ;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.5);
+
+  }
 `
 
-const OptionButton = () => {
+const LinkOptionButton = styled.a`
+  all:unset;
+  height: 50px;
+  width: 50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius: 50%;
+  background-color: #ffffff;
+  cursor: pointer;
+  opacity:100%;
+  transition : all 0.25 ease-in-out ;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.5);
+
+  }
+`
+
+const OptionButton = (props:{
+  children?:JSX.Element, 
+  onClick?: () => void}) => {
 
   return(
-    <CircleButton>I</CircleButton>
+    <CircleButton onClick={props.onClick}>{props.children}</CircleButton>
   )
 }
 
-const ItemCard = () => {
+const ItemCard = (prop: NewDeals) => {
+  const {title, price, rating, reviews, url, imageURL} = prop
   const [mouseEnter, useMouseEnter] = useState(false);
+  const [isFavorite, useIsFavorite] = useState(false);
 
   const handleMouseEnter = () => {
     useMouseEnter(true);
@@ -107,25 +149,41 @@ const ItemCard = () => {
     useMouseEnter(false);
   }
 
+  const handleOnFavorite = () => {
+    useIsFavorite(!isFavorite);
+  }
+
   return (
     <Card onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <ImageArea>
-          <Image  src={ProductImg} alt='product'/>
+          <Image  src={imageURL} alt='product'/>
         </ImageArea>
         <Details>
-          <Title>Mika Keychain</Title>
+          <Title>{title}</Title>
           <Bottom>
-            <Price>$ 100.00</Price>
-            <Rating>*****</Rating>
+            <Price>$ {price}</Price>
+            <Rating>{"*".repeat(rating)+`(${reviews})`}</Rating>
           </Bottom>
         </Details>
         <OptionsBackground isVisible={mouseEnter}>
           
         </OptionsBackground>
         <Options isVisible={mouseEnter}>
-            <OptionButton/>
-          <OptionButton/>
-          <OptionButton/>
+          <OptionButton>
+            <span className="material-icons-outlined">
+              shopping_cart
+            </span>
+          </OptionButton>
+          <OptionButton onClick={handleOnFavorite}>{
+            isFavorite?
+            <FavoriteIcon style={{color: "pink"}}/>:
+            <FavoriteBorderIcon/>}
+            </OptionButton>
+          <LinkOptionButton href={url}>
+            <span className="material-icons-outlined">
+              search
+            </span>
+        </LinkOptionButton>
         </Options>
     </Card>
   )
