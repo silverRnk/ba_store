@@ -137,6 +137,7 @@ const BackSpcButton = styled("button").withConfig({
     display: ${(props) => (props.isVisible ? "flex" : "none")};
     align-items:center;
     justify-content:center;
+  }
 `;
 
 const Center = styled("div").withConfig({
@@ -173,7 +174,7 @@ const IconWrapper = styled("button").withConfig({
     background-color:transparent;
   }
 
-  &:hover:{
+  &:hover{
     filter:brightness(0.7);
   }
 
