@@ -5,6 +5,11 @@ import { cardNavigation } from "../../data";
 import { styled } from "styled-components";
 import ItemCard from "../../ui/components/ItemCard";
 
+
+//Mockdate
+import { newDeals } from "../../data";
+
+
 const Wrapper = styled.div`
 `
 
@@ -51,17 +56,12 @@ const Home = () => {
       <NewDeals>
         <Title>New Deals</Title>
         <ProductWrapper>
-          <ItemCard/>
-          <ItemCard/>
-          <ItemCard/>
-          <ItemCard/>
-          <ItemCard/>
-          <ItemCard/>
+          {newDeals.map((item) => <ItemCard {...item}/>)}
         </ProductWrapper>
 
       </NewDeals>
     </Wrapper>
   );
-};
+}
 
 export default Home;

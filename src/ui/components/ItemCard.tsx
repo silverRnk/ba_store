@@ -162,7 +162,7 @@ const ItemCard = (prop: NewDeals) => {
           <Title>{title}</Title>
           <Bottom>
             <Price>$ {price}</Price>
-            <Rating>{"*".repeat(rating)}</Rating>
+            <Rating>{"*".repeat(rating)+`(${reviews})`}</Rating>
           </Bottom>
         </Details>
         <OptionsBackground isVisible={mouseEnter}>
